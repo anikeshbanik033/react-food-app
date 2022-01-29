@@ -1,13 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import App from './Containers/App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from 'react-redux';
+import {IntlProvider} from 'react-intl'
+import store from './Store/configureStore'
+import intlJosn from './i18n/en-EN'
+import './index.css';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store = {store}>
+    <IntlProvider
+      key = {intlJosn.locale}
+      locale = {intlJosn.locale}
+      messages = {intlJosn.message}
+    >
+      <App />
+    </IntlProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
